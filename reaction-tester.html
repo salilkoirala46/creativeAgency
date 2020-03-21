@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title></title>
+    <style>
+
+    </style>
+</head>
+    <body>
+        <h1>Test Your Reactions!</h1>
+        Click on the boxes and circles as quickly as you can!
+        <p id="timer"><b>Your Time:</b></p>
+        <div id="shapes"></div>  
+        <script type="text/javascript">
+            getshape();
+            var startTime;
+            function getshape(){
+                console.log("abc");
+                var height=Math.floor((Math.random() * 200) + 40);
+                var width=Math.floor((Math.random() * 200) + 40);
+
+                var color=Math.floor((Math.random() * 200) + 40);
+                leftMargin=Math.floor((Math.random() * 800) + 1);
+                topMargin=Math.floor((Math.random() * 400) + 1);
+                rightMargin=Math.floor((Math.random() * 800) + 1);
+                bottomMargin=Math.floor((Math.random() * 400) + 1);
+                shape=(Math.floor((Math.random() * 3))+1);
+                if(shape=='1'){
+                    height=width=Math.floor((Math.random() * 200) + 40);
+                    document.getElementById("shapes").style.borderRadius="0%";
+                    document.getElementById("shapes").style.height=height;
+                    document.getElementById("shapes").style.width=width; 
+                }
+                else if(shape=='2'){
+                    width=Math.floor((Math.random() * 200) + 100);
+                    height=Math.floor((Math.random() * 200) + 40);
+                    document.getElementById("shapes").style.borderRadius="0%";
+                    document.getElementById("shapes").style.height=height;
+                    document.getElementById("shapes").style.width=width; 
+                }
+                else{
+                    width=Math.floor((Math.random() * 200) + 40);
+                    height=Math.floor((Math.random() * 200) + 40);
+                    document.getElementById("shapes").style.borderRadius="50%";
+                    document.getElementById("shapes").style.height=height;
+                    document.getElementById("shapes").style.width=width; 
+                }
+                color='#'+Math.random().toString(16).slice(-6);
+                document.getElementById("shapes").style.backgroundColor=color;
+                document.getElementById("shapes").style.height=height;
+                document.getElementById("shapes").style.width=width;
+                document.getElementById("shapes").style.marginLeft=leftMargin;
+                document.getElementById("shapes").style.marginRight=rightMargin;
+                document.getElementById("shapes").style.marginTop=topMargin;
+                document.getElementById("shapes").style.marginBottom=bottomMargin;
+                startTime=Date.now();
+            }
+                
+            document.getElementById("shapes").onclick=function(){
+                    if(startTime){
+                        var endTime=Date.now();
+                        var difference=(endTime-startTime)/10000;
+                        document.getElementById('timer').innerHTML="<b>Your Time:"+difference+"secs. </b";
+                        startTime=null;
+                    }
+                    setTimeout(getshape, 1000);
+                }
+                
+            
+            
+            </script>  
+    </body>
+</html>
